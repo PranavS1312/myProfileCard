@@ -1,62 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://kit.fontawesome.com/a9ded614e9.js" crossorigin="anonymous"></script>
-    <link rel="icon" href="https://freesvg.org/img/abstract-user-flat-4.png">
-    <title>My Profile Card</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile Card</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="index.css" />
+
+  <!-- Boxicons & FontAwesome -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+  <script src="https://kit.fontawesome.com/a9ded614e9.js" crossorigin="anonymous"></script>
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://freesvg.org/img/abstract-user-flat-4.png" />
 </head>
 <body>
 
-    <div class="profile-card"> 
-        <div class="image">
-            <img src="myAnimePic.png" class="profile-img">
+  <!-- Card Wrapper -->
+  <div class="card-container" onclick="flipCard(this)">
+    <div class="card">
 
-        </div>
+      <!-- FRONT SIDE -->
+      <div class="card-front">
+        <div class="profile-card"> 
+          <div class="image">
+            <img src="myAnimePic.png" class="profile-img" alt="Profile" />
+          </div>
 
-        <div class="text-data">
+          <div class="text-data">
             <span class="name">Pranav Shinde</span>
             <span class="job">Computer Engineering Student</span>
             <span class="job">at SPPU</span>
-        </div>
+          </div>
 
-        <div class="media-buttons">
-            <a href="https://www.linkedin.com/in/pranav-shinde-326261291" style="background-color: #4267b2 ;" class="link">
-                <i class="fa-brands fa-linkedin"></i>
+          <div class="media-buttons">
+            <a href="https://www.linkedin.com/in/pranav-shinde-326261291" style="background-color: #4267b2;" class="link">
+              <i class="fa-brands fa-linkedin"></i>
             </a>
-            <a href="https://x.com/Pranav13120" style="background-color: #080808 ;" class="link">
-                <i class="fa-brands fa-x-twitter"></i>
+            <a href="https://x.com/Pranav13120" style="background-color: #080808;" class="link">
+              <i class="fa-brands fa-x-twitter"></i>
             </a>
-            <a href="https://www.instagram.com/pranav_shinde246?igsh=M2JwYWJyYmMzMGlm" style="background-color: #e1306c ;" class="link">
-                <i class='bx bxl-instagram'></i>
+            <a href="https://www.instagram.com/pranav_shinde246?igsh=M2JwYWJyYmMzMGlm" style="background-color: #e1306c;" class="link">
+              <i class='bx bxl-instagram'></i>
             </a>
-            <a href="https://github.com/PranavS1312" style="background-color: #00023bea ;" class="link">
-                <i class="fa-brands fa-github"></i>
+            <a href="https://github.com/PranavS1312" style="background-color: #00023bea;" class="link">
+              <i class="fa-brands fa-github"></i>
             </a>
-        </div>
+          </div>
 
-        <div class="buttons">
+          <div class="buttons">
             <button class="button">Portfolio</button>
-            <button class="button"><a style="text-decoration: none ; color: white;" href="mailto:pranavshinde1312@gmail.com">Contact</a></button>
-        </div>
+            <button class="button">
+              <a href="mailto:pranavshinde1312@gmail.com" style="text-decoration: none; color: white;">Contact</a>
+            </button>
+          </div>
 
-        <div class="analytics">
+          <div class="analytics">
             <div class="data">
-               <i class="fa-solid fa-envelope"></i>
-                <span class="number">pranavshinde1312@gmail.com</span>
+              <i class="fa-solid fa-envelope"></i>
+              <span class="number">pranavshinde1312@gmail.com</span>
             </div>
-           
-           
+          </div>
         </div>
+      </div>
+
+      <!-- BACK SIDE -->
+      <div class="card-back">
+        <h1 class="thanks-msg">Thanks for visiting my card!</h1>
+        <p>You can reach me on any of the platforms listed on the front.</p>
+      </div>
 
     </div>
+  </div>
 
+  <!-- JavaScript -->
+ <script>
+  function flipCard(container) {
+    // Only flip if click target is NOT a button or link
+    document.addEventListener("click", function (e) {
+      const isButton = e.target.closest("button");
+      const isLink = e.target.closest("a");
+      const isInsideCard = container.contains(e.target);
 
+      if (!isButton && !isLink && isInsideCard) {
+        container.querySelector(".card").classList.toggle("flipped");
+      }
+    });
+  }
 
+  // Initialize on page load
+  document.addEventListener("DOMContentLoaded", function () {
+    flipCard(document.querySelector(".card-container"));
+  });
+</script>
 
-    
 </body>
 </html>
